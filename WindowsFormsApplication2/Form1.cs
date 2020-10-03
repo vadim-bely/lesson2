@@ -30,7 +30,27 @@ namespace WindowsFormsApplication2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            label5.Text = textBox1.Text + "X² +" + textBox2.Text + "x +" + textBox3.Text + "=0";
+            double a = Convert.ToDouble(textBox1.Text);
+            double b = Convert.ToDouble(textBox2.Text);
+            double c = Convert.ToDouble(textBox3.Text);
+            
+            Equation equation = new Equation(a, b, c);
+
+        
+            if (b < 0 && c > 0) label5.Text = a + "X² - " + -b + "x + " + c + " = 0 " + "\n"
+                                     + " x₁ = " + equation.getX1() + "\n" 
+                                     + " x₂ = " + equation.getX2();
+            else if (c < 0 && b > 0) label5.Text = a + "X² + " + b + "x - " + -c + " = 0 " + "\n"
+                                     + " x₁ = " + equation.getX1() + "\n" 
+                                     + " x₂ = " + equation.getX2();
+            else if (b < 0 && c < 0) label5.Text = a + "X² - " + -b + "x - " + -c + " = 0 " + "\n"
+                                              + " x₁ = " + equation.getX1() + "\n" 
+                                              + " x₂ = " + equation.getX2();
+            else  label5.Text = a + "X² + " + b + "x + " + c + " = 0 " + "\n"
+                                                   + " x₁ = " + equation.getX1() + "\n" 
+                                                   + " x₂ = " + equation.getX2();
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
